@@ -1,0 +1,36 @@
+<%- include('./partials/html-head.ejs') %> <%- include('./partials/nav') %>
+<main>
+  <% if (user) { %>
+
+  <div class="card mx-auto mt-3" style="width: 18rem">
+    <img
+      src="<%= user.profile.avatar %>"
+      class="card-img-top p-4"
+      alt="<%= user.profile.name %> avatar"
+    />
+    <div class="card-body">
+      <h5 class="card-title my-font">Hi <%= user.profile.name %></h5>
+      <p class="card-text">Check out the status of your reading list here!</p>
+      <a href="/myreadinglist/<%= user.profile_id %>" class="btn btn-primary"
+        >CHECK MY LIST</a
+      >
+    </div>
+  </div>
+  <% } else { %>
+  <div class="card mx-auto mt-3" style="width: 18rem">
+    <img src="/images/book/logo/book.svg" class="card-img-top p-4" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title my-font">Welcome to MyReadingList</h5>
+      <p class="card-text">
+        MyReadingList is a Web Application that keeps track of your reading
+        list. No more excuses!
+      </p>
+      <a href="/auth/google" class="btn btn-primary"
+        ><img src="/images/book/logo/googlelogin.svg" />Log in with Google</a
+      >
+    </div>
+  </div>
+  <% } %>
+</main>
+
+<%- include('./partials/footer.ejs') %>
