@@ -49,6 +49,7 @@ server.listen(port, () => {
 
 import { router as indexRouter } from "./routes/index.js";
 import { router as authRouter } from "./routes/auth.js";
+import { router as profileRouter } from "./routes/profile.js";
 
 import("./config/passport.js");
 import("./config/database.js");
@@ -73,3 +74,4 @@ app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/myreadinglist", profileRouter);
