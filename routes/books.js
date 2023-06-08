@@ -7,5 +7,14 @@ router.get("/", bookCtrl.index);
 router.get("/new", bookCtrl.new);
 router.post("/", bookCtrl.create);
 router.get("/:id", bookCtrl.show);
+router.get("/:id/addtolist", isLoggedIn, bookCtrl.addToList);
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect("/auth/google");
+  }
+}
 
 export { router };

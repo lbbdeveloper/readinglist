@@ -1,12 +1,32 @@
 <%- include('../partials/html-head.ejs') %>
 <main class="homePage">
   <%- include('../partials/nav') %>
+
   <div class="container-fluid">
     <div class="d-flex justify-content-between p-1">
       <h5>BookList</h5>
       <a href="/book/new"><span>ADD NEW BOOK</span> </a>
     </div>
+
+    <div class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4">
+      <% book.forEach((book) => { %>
+
+      <div class="col">
+        <div class="card mx-auto mt-3" style="width: 18rem">
+          <img
+            src="<%= book.img %> "
+            class="card-img-top"
+            alt="Placeholder Img"
+          />
+          <h5 class="card-title text-center"><%= book.name %></h5>
+          <p class="mb-0 text-center">Author:</p>
+          <p class="mb-3 text-center"><%= book.author %></p>
+          <p class="mb-0 text-center">Description:</p>
+          <p class="mb-3 text-center"><%= book.description %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
   </div>
 </main>
-
 <%- include('../partials/footer.ejs') %>

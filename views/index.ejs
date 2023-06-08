@@ -11,8 +11,10 @@
         alt="<%= user.profile.name %>"
       />
       <div class="card-body">
-        <h5 class="card-title my-font">Hi <%= user.profile.name %></h5>
-        <p class="card-text">Check out the status of your reading list here!</p>
+        <h4 class="card-title my-font">Hi <%= user.profile.name %></h4>
+        <p class="card-text text-center">
+          Check out the status of your reading list here!
+        </p>
         <a href="/myreadinglist/<%=user.profile._id%>" class="btn btn-primary"
           >CHECK MY LIST</a
         >

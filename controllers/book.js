@@ -1,7 +1,7 @@
 import { Book } from "../models/book.js";
 import { Profile } from "../models/profile.js";
 
-export { index, newBook as new, create, show };
+export { index, newBook as new, create, show, addToList };
 
 function index(req, res) {
   Book.find({}, function (err, book) {
@@ -37,6 +37,21 @@ function show(req, res) {
     res.render("book/show", {
       title: "Book Detail",
       book: book,
+    });
+  });
+}
+
+function addToList(req, res) {
+  Profile.findById(req.user.profile._id).then((profile) => {
+    if (!profile.books.includes(req.params.id)) {
+      profile.books.push(req.params.id);
+    }
+    profile.save(function (err) {
+      if (err) {
+        console.log(err);
+        return res.redirect("/");
+      }
+      res.redirect(`/myreadinglist/${profile._id}`);
     });
   });
 }
