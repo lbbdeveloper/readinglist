@@ -5,7 +5,7 @@ const bookSchema = new mongoose.Schema(
     name: String,
     img: {
       type: String,
-      default: "/images/book/sketches/placeholder.png",
+      default: "/images/book/logo/placeholder.png",
     },
     author: String,
     description: String,

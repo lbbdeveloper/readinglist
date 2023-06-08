@@ -1,8 +1,60 @@
 <%- include('../partials/html-head.ejs') %>
-<main>
+<main class="homePage">
   <%- include('../partials/nav') %>
 
-  <span>newbook</span>
+  <div class="container-fluid">
+    <div class="card mx-auto mt-3 p-3" style="width: 26rem">
+      <h5 class="mx-auto">New Book Data</h5>
+      <form action="/book" method="POST">
+        <img
+          src="/images/book/logo/placeholder.png"
+          class="card-img-top"
+          alt="..."
+        />
 
+        <div class="form-floating mb-3">
+          <input
+            type="String"
+            class="form-control"
+            id="floatingInput"
+            name="name"
+            placeholder="name"
+          />
+          <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="String"
+            class="form-control"
+            id="floatingInput"
+            name="img"
+            placeholder="img url here"
+          />
+          <label for="floatingInput">Img url</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="String"
+            class="form-control"
+            id="floatingInput"
+            name="author"
+            placeholder="Author"
+          />
+          <label for="floatingInput">Author</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="String"
+            class="form-control"
+            id="floatingInput"
+            name="description"
+            placeholder="Description"
+          />
+          <label for="floatingInput">Description</label>
+        </div>
+        <button type="submit" class="btn btn-outline-primary">Add Book</button>
+      </form>
+    </div>
+  </div>
   <%- include('../partials/footer.ejs') %>
 </main>

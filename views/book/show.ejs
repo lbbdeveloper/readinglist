@@ -1,11 +1,19 @@
 <%- include('../partials/html-head.ejs') %>
-<main>
+<main class="homePage">
   <%- include('../partials/nav') %>
 
-  <div class="d-flex justify-content-between p-1">
-    <h5>BookList</h5>
-    <a href="/book/new"><span>ADD NEW BOOK</span> </a>
+  <div class="container-fluid">
+    <display-5 class="mx-auto">Book Show Page</display-5>
+
+    <div class="card mx-auto mt-3 p-3" style="width: 26rem">
+      <img src="<%= book.img %> " class="card-img-top" alt="Placeholder Img" />
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= book.name %></h5>
+        <p class="mb-0 text-center">Author:</p>
+        <p class="mb-1 text-center"><%= book.author %></p>
+        <p class="mb-0 text-center custom-text">Description:</p>
+        <p class="mb-3 text-center custom-text"><%= book.description %></p>
+      </div>
+    </div>
   </div>
 </main>
-
-<%- include('../partials/footer.ejs') %>
