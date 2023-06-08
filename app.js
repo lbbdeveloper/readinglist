@@ -8,6 +8,12 @@ import https from "https";
 import http from "http";
 import fs from "fs";
 import os from "os";
+import { router as indexRouter } from "./routes/index.js";
+import { router as authRouter } from "./routes/auth.js";
+import { router as profileRouter } from "./routes/profile.js";
+import { router as bookRouter } from "./routes/books.js";
+import("./config/passport.js");
+import("./config/database.js");
 
 // set up dotenv path
 dotenv.config({ path: ".env" });
@@ -47,13 +53,6 @@ server.listen(port, () => {
   console.log(`app running on port ${port}...`);
 });
 
-import { router as indexRouter } from "./routes/index.js";
-import { router as authRouter } from "./routes/auth.js";
-import { router as profileRouter } from "./routes/profile.js";
-
-import("./config/passport.js");
-import("./config/database.js");
-
 //session middleware
 app.use(express.urlencoded({ extended: true }));
 
@@ -70,8 +69,11 @@ app.use(
 
 // mount passport after session middleware and before routes
 app.use(passport.initialize());
+//as the user navigates from page to page, the session itself can be authenticated
+//using the built-in session strategy
 app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/myreadinglist", profileRouter);
+app.use("/book", bookRouter);

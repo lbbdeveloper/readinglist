@@ -43,11 +43,14 @@ passport.use(
     }
   )
 );
-
+//after user successfully authenticates using a credential
+//a login session is established and session (cookie) stores user.id only
 passport.serializeUser(function (user, done) {
   done(null, user.id);
 });
 
+// when the session is autuenticated, passport will call deserializedUser function
+// to yield stored user.id
 passport.deserializeUser(function (id, done) {
   User.findById(id)
     .populate("profile", "name avatar")
