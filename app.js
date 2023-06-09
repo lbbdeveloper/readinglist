@@ -14,11 +14,14 @@ import { router as profileRouter } from "./routes/profile.js";
 import { router as bookRouter } from "./routes/books.js";
 import("./config/passport.js");
 import("./config/database.js");
+import methodOverride from "method-override";
 
 // set up dotenv path
 dotenv.config({ path: ".env" });
 
 const app = express();
+
+app.use(methodOverride("_method"));
 
 // set up view engine
 app.set(

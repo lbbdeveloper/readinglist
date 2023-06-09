@@ -1,7 +1,16 @@
 import { Book } from "../models/book.js";
 import { Profile } from "../models/profile.js";
 
-export { index, newBook as new, create, show, addToList };
+export {
+  index,
+  newBook as new,
+  create,
+  show,
+  addToList,
+  deleteBook as delete,
+  edit,
+  update,
+};
 
 function index(req, res) {
   Book.find({}, function (err, book) {
@@ -53,5 +62,35 @@ function addToList(req, res) {
       }
       res.redirect(`/myreadinglist/${profile._id}`);
     });
+  });
+}
+
+function deleteBook(req, res) {
+  Book.findByIdAndDelete(req.params.id, function (err, book) {
+    res.redirect("/book");
+  });
+}
+
+function edit(req, res) {
+  Book.findById(req.params.id, function (err, book) {
+    res.render("book/edit", {
+      book: book,
+      title: "Edit Book",
+    });
+  });
+}
+
+function update(req, res) {
+  for (let key in req.body) {
+    if (req.body[key] === "") {
+      delete req.body[key];
+    }
+  }
+  Book.findByIdAndUpdate(req.params.id, req.body, function (err, book) {
+    if (err) {
+      res.send(err);
+    } else {
+      res.redirect(`/book/${book._id}`);
+    }
   });
 }

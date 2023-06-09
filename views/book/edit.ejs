@@ -1,0 +1,59 @@
+<%- include('../partials/html-head.ejs') %>
+<main class="homePage">
+  <%- include('../partials/nav') %>
+
+  <div class="container-fluid">
+    <h6 class="mx-auto">Edit Book Data</h6>
+    <div class="card mx-auto mt-3 p-3" style="width: 22rem">
+    <form action="/book/<%= book._id %>/?_method=PUT" method="POST">
+        <img
+          src="<%= book.img %> "
+          class="card-img-top"
+          alt="Placeholder Img"
+        />
+        <div class="form-floating mb-3">
+            <input
+              type="String"
+              class="form-control"
+              id="floatingInput"
+              name="name"
+              placeholder="name"
+            />
+            <label for="floatingInput">Name</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="String"
+              class="form-control"
+              id="floatingInput"
+              name="img"
+              placeholder="img url here"
+            />
+            <label for="floatingInput">Img url</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="String"
+              class="form-control"
+              id="floatingInput"
+              name="author"
+              placeholder="Author"
+            />
+            <label for="floatingInput">Author</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="String"
+              class="form-control"
+              id="floatingInput"
+              name="description"
+              placeholder="Description"
+            />
+            <label for="floatingInput">Description</label>
+          </div>
+          <button type="submit" class="btn btn-outline-primary">Update Book</button>
+      </div>
+    </form>
+  </div>
+</main>
+<%- include('../partials/footer.ejs') %>
