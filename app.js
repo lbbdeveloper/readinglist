@@ -52,8 +52,8 @@ if (process.env.NODE_ENV !== "production") {
   server = http.createServer(app);
 }
 
-const port = 3000;
-server.listen(port, () => {
+// const port = 3000;
+server.listen(process.env.PORT || 3000, "0.0.0.0", () => {
   console.log(`app running on port ${port}...`);
 });
 
