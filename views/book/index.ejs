@@ -33,7 +33,13 @@
           <p class="mb-0 text-center">Author:</p>
           <p class="mb-3 text-center"><%= book.author %></p>
           <p class="mb-0 text-center">Description:</p>
-          <p class="mb-3 text-center"><%= book.description %></p>
+          <% if (book.description?.length > 30) { %>
+          <p class="mb-3 text-center custom-text">
+            <%= book.description.substring(0,30) + "..." %>
+          </p>
+          <% } else { %>
+          <p class="mb-3 text-center custom-text"><%= book.description %></p>
+          <% } %>
         </div>
       </div>
       <% }) %>

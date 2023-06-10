@@ -7,6 +7,7 @@ export {
   newBook as new,
   create,
   show,
+  apibookshow,
   addToList,
   removefromlist,
   deleteBook as delete,
@@ -50,6 +51,44 @@ function show(req, res) {
       title: "Book Detail",
       book: book,
     });
+  });
+}
+
+function apibookshow(req, res) {
+  //use googleBookId to check if searched book already exists in database
+  //use book._id to render book.show page
+  Book.findOne({ googleBookId: req.params.id }).then((book) => {
+    if (book) {
+      //to make sure use book._id to render, not googleBookId
+      res.redirect(`/book/${book._id}`);
+    } else {
+      axios
+        .get(
+          `https://www.googleapis.com/books/v1/volumes/${req.params.id}?key=${process.env.API_KEY}`
+        )
+        .then((response) => {
+          const newBook = new Book({
+            googleBookId: req.params.id,
+            name: response.data.volumeInfo.title,
+            img: response.data.volumeInfo.imageLinks?.thumbnail,
+            author: response.data.volumeInfo.authors[0]
+              ? response.data.volumeInfo.authors[0]
+              : "",
+            description: response.data.volumeInfo.description,
+          });
+          newBook.save(function (err) {
+            if (err) {
+              console.log(err);
+              return res.redirect("/");
+            }
+            res.redirect(`/book/${newBook._id}`);
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.redirect("/");
+        });
+    }
   });
 }
 
@@ -117,11 +156,16 @@ function update(req, res) {
 }
 
 function search(req, res) {
+  if (!req.body.search) {
+    res.redirect("/");
+  }
   axios
     .get(
       `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}:keyes&key=${process.env.API_KEY}`
     )
     .then((response) => {
+      // POST method is done at /book/search
+      //res.render doesn't change url
       res.render("book/showsearch", {
         title: "Search results",
         results: response.data.items,

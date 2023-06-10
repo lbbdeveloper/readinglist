@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema(
   {
+    googleBookId: String,
     name: String,
     img: {
       type: String,
