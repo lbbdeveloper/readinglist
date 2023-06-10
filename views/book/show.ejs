@@ -8,9 +8,13 @@
     <div class="card mx-auto mt-3 p-3" style="width: 22rem">
       <div class="d-flex justify-content-between p-1">
         <a class="btn btn-outline-warning" href="/book"> << </a>
+
+        <% if (user) { %>
+
         <a class="btn btn-outline-warning" href="/book/<%= book._id %>/edit">
           Edit
         </a>
+        <% } %>
       </div>
 
       <img src="<%= book.img %> " class="card-img-top" alt="Placeholder Img" />
@@ -20,12 +24,16 @@
         <p class="mb-1 text-center"><%= book.author %></p>
         <p class="mb-0 text-center custom-text">Description:</p>
         <p class="mb-3 text-center custom-text"><%= book.description %></p>
+
+        <% if (user) { %>
         <a
           class="text-center d-block mx-5 btn btn-outline-warning"
           href="/book/<%= book._id %>/addtolist"
         >
           <span>Add to My List</span>
         </a>
+
+        <% } %>
       </div>
     </div>
   </div>

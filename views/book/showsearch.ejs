@@ -12,9 +12,11 @@
         <div class="card mx-auto mt-3" style="width: 18rem">
           <div class="d-flex justify-content-between p-1">
             <div></div>
+            <% if (user) { %>
             <a class="btn btn-outline-warning" href="/book/api/<%= book.id %>">
               •••
             </a>
+            <% } %>
           </div>
           <img
             src="<%= book.volumeInfo?.imageLinks?.thumbnail %> "

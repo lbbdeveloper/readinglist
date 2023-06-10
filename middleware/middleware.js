@@ -1,5 +1,3 @@
-// try remove it
-
 export { passUserToView };
 
 function passUserToView(req, res, next) {

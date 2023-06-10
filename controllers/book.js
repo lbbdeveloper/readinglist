@@ -17,18 +17,15 @@ export {
 };
 
 function index(req, res) {
-  Book.find({}, function (err, book) {
+  Book.find({}, function (err, books) {
     res.render("book/index", {
-      book: book,
-      title: "All Book",
+      books: books,
     });
   });
 }
 
 function newBook(req, res) {
-  res.render("book/new", {
-    title: "Add Book",
-  });
+  res.render("book/new", {});
 }
 
 function create(req, res) {
@@ -48,7 +45,6 @@ function create(req, res) {
 function show(req, res) {
   Book.findById(req.params.id).then((book) => {
     res.render("book/show", {
-      title: "Book Detail",
       book: book,
     });
   });
@@ -135,7 +131,6 @@ function edit(req, res) {
   Book.findById(req.params.id, function (err, book) {
     res.render("book/edit", {
       book: book,
-      title: "Edit Book",
     });
   });
 }
@@ -164,10 +159,7 @@ function search(req, res) {
       `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}:keyes&key=${process.env.API_KEY}`
     )
     .then((response) => {
-      // POST method is done at /book/search
-      //res.render doesn't change url
       res.render("book/showsearch", {
-        title: "Search results",
         results: response.data.items,
       });
     })

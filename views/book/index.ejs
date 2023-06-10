@@ -11,14 +11,18 @@
     <div
       class="row row-cols-1 row-cols-sm-3 row-cols-md-3 row-cols-lg-4 g-sm-2 g-md-3 g-lg-4"
     >
-      <% book.forEach((book) => { %>
+      <% books.forEach((book) => { %>
 
       <div class="col">
         <div class="card mx-auto mt-3" style="width: 18rem">
           <div class="d-flex justify-content-between p-1">
+            <% if (user) { %>
             <form action="/book/<%= book._id %>?_method=DELETE" method="POST">
               <button type="submit" class="btn btn-outline-warning">X</button>
             </form>
+            <% } else { %>
+            <div></div>
+            <% } %>
             <a class="btn btn-outline-warning" href="/book/<%= book._id %>">
               •••
             </a>
