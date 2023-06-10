@@ -15,6 +15,7 @@ import { router as bookRouter } from "./routes/books.js";
 import("./config/passport.js");
 import("./config/database.js");
 import methodOverride from "method-override";
+import { passUserToView } from "./middleware/middleware.js";
 
 // set up dotenv path
 dotenv.config({ path: ".env" });
@@ -75,6 +76,9 @@ app.use(passport.initialize());
 //as the user navigates from page to page, the session itself can be authenticated
 //using the built-in session strategy
 app.use(passport.session());
+
+// custom middleware
+app.use(passUserToView);
 
 app.use("/", indexRouter);
 app.use("/auth", authRouter);

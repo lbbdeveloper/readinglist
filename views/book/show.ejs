@@ -20,8 +20,11 @@
         <p class="mb-1 text-center"><%= book.author %></p>
         <p class="mb-0 text-center custom-text">Description:</p>
         <p class="mb-3 text-center custom-text"><%= book.description %></p>
-        <a class="test-center mx-5" href="/book/<%= book._id %>/addtolist">
-          <span>Add to My Reading List</span>
+        <a
+          class="text-center d-block mx-5 btn btn-outline-warning"
+          href="/book/<%= book._id %>/addtolist"
+        >
+          <span>Add to My List</span>
         </a>
       </div>
     </div>

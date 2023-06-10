@@ -13,6 +13,12 @@
 
       <div class="col">
         <div class="card mx-auto mt-3" style="width: 18rem">
+          <div class="d-flex justify-content-between p-1">
+            <a class="btn btn-outline-warning" href="/book/<%= book._id %>">
+              •••
+            </a>
+          </div>
+
           <img
             src="<%= book.img %> "
             class="card-img-top"
@@ -23,6 +29,12 @@
           <p class="mb-3 text-center"><%= book.author %></p>
           <p class="mb-0 text-center">Description:</p>
           <p class="mb-3 text-center"><%= book.description %></p>
+          <a
+            class="test-center mx-5 mb-3 btn btn-outline-warning"
+            href="/book/<%= book._id %>/removefromlist"
+          >
+            <span>Remove from List</span>
+          </a>
         </div>
       </div>
       <% }) %>

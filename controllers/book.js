@@ -1,5 +1,6 @@
 import { Book } from "../models/book.js";
 import { Profile } from "../models/profile.js";
+import axios from "axios";
 
 export {
   index,
@@ -7,9 +8,11 @@ export {
   create,
   show,
   addToList,
+  removefromlist,
   deleteBook as delete,
   edit,
   update,
+  search,
 };
 
 function index(req, res) {
@@ -65,6 +68,24 @@ function addToList(req, res) {
   });
 }
 
+function removefromlist(req, res) {
+  Profile.findById(req.user.profile._id).then((profile) => {
+    if (profile.books.includes(req.params.id)) {
+      const filteredBooks = profile.books.filter(
+        (book) => book._id != req.params.id
+      );
+      profile.books = filteredBooks;
+    }
+    profile.save(function (err) {
+      if (err) {
+        console.log(err);
+        return res.redirect("/");
+      }
+      res.redirect(`/myreadinglist/${profile._id}`);
+    });
+  });
+}
+
 function deleteBook(req, res) {
   Book.findByIdAndDelete(req.params.id, function (err, book) {
     res.redirect("/book");
@@ -93,4 +114,21 @@ function update(req, res) {
       res.redirect(`/book/${book._id}`);
     }
   });
+}
+
+function search(req, res) {
+  axios
+    .get(
+      `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}:keyes&key=${process.env.API_KEY}`
+    )
+    .then((response) => {
+      res.render("book/showsearch", {
+        title: "Search results",
+        results: response.data.items,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.redirect("/");
+    });
 }
