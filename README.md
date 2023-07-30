@@ -4,15 +4,22 @@ Keep Track of your personal reading list!
 ## Getting Started
 1. Deployed APP: https://myreadinglist.herokuapp.com/
 2. Trello Board: https://trello.com/b/JS6K339u/myreadinglist
-3. ERD: ![readinglist](https://github.com/lbbdeveloper/readinglist/assets/96930550/0ee460b6-a2a0-4d57-bdfc-6fe1fb669fb5)
+3. ERD: ![readinglist](https://github.com/lbbdeveloper/readinglist/assets/96930550/e858a06c-8af1-4dfa-af0c-cb1178a0f03e)
+
 
 ## Screenshots
-1. Home screen to login ![1](https://github.com/lbbdeveloper/readinglist/assets/96930550/5c1ce47b-dde8-4a24-9587-9ff358fb28e6)
-2. Book index page ![2](https://github.com/lbbdeveloper/readinglist/assets/96930550/570d3869-a849-42f6-934e-a8b503f276c4)
-3. Create a new book <img width="1439" alt="3" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/942e0930-6522-4e0c-aaa7-39d0f7bd173e">
-4. Edit a book <img width="1439" alt="Screen Shot 2023-06-10 at 8 59 27 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/daa81fbc-d3a5-453f-a356-6bf17743fab0">
-5. Search for a book <img width="1081" alt="5" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/d2d08e3f-4f8d-4a56-a039-bb3f9d9d38cd">
-6. Show reading list <img width="1439" alt="6" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/4b3e077a-d980-4966-a243-9cb4a2957ddc">
+1. Home screen to login <img width="1252" alt="Screenshot 2023-07-30 at 1 34 52 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/67881a9d-358d-4dea-9269-ba7f268c3ee9">
+
+2. Book index page <img width="1552" alt="Screenshot 2023-07-30 at 1 35 56 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/892da802-2fac-43ad-bcab-f7c0177bd8f5">
+
+3. Create a new book <img width="1552" alt="Screenshot 2023-07-30 at 1 36 48 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/40dc9ffd-93b5-4d61-b6ec-0beb9f16941c">
+
+4. Edit a book <img width="1552" alt="Screenshot 2023-07-30 at 1 37 28 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/d38db6d1-6b85-4293-b6d6-3914745855ea">
+
+5. Search for a book <img width="1552" alt="Screenshot 2023-07-30 at 1 37 59 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/9ea95daa-eceb-43c6-afbd-04bd394dce6f">
+
+6. Show reading list <img width="1552" alt="Screenshot 2023-07-30 at 1 38 35 PM" src="https://github.com/lbbdeveloper/readinglist/assets/96930550/b9d13849-a86d-4990-a1a4-d017bf38000a">
+
 
 ## Technologies Used
 1. HTML, CSS, JavaScript
